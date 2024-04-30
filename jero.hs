@@ -24,8 +24,16 @@ moverFin (Linea x y) = Linea x (length x)
 
 insertar :: Char -> Linea -> Linea
 insertar c (Linea xs y) = Linea (ins c y xs) (y+1)
-
-
+ 
 ins :: Char -> Int -> [Char] -> [Char]
 ins c 0 xs = c:xs
 ins c n (x:xs) = x : ins c (n-1) xs
+
+borrar :: Linea -> Linea
+borrar (Linea xs y) = Linea (bor y xs) (y-1)
+
+bor :: Int -> [Char] -> [Char]
+bor 0 (x:xs) = xs
+bor 2 (x:y:xs) = x:xs 
+bor y (x:xs) = x : (bor (y-1) xs)
+
